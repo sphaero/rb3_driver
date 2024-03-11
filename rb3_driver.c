@@ -233,7 +233,7 @@ int main(int argc, char **argv) {
         return r;
     }
     my_atexit(myusb_close, h);
-
+    libusb_detach_kernel_driver(h, interface_number);
     r = libusb_claim_interface(h, interface_number);
     if (r < 0) {
         fprintf(stderr, "Failed to claim input device interface\n");
